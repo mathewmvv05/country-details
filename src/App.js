@@ -1,27 +1,30 @@
-import React from 'react';
-import { useQuery, gql } from '@apollo/client';
-
+import React, { Component } from 'react';
+import { Details } from "./get-country-details/search-results.jsx";
 import './App.css';
 
 
-const COUNTRY_DETAILS = gql`{
-  countryDetails(name: "united") {
-    name,
-    capital
-  }
-}`
-function App() {
-  const { loading, error, data } = useQuery(COUNTRY_DETAILS);
-  if(loading) return <h1>Loading</h1>
-  if(error) return <h1>Error</h1>
-  console.log(data)
-  return (
-    <div>
-        {data.countryDetails.map(function(country, i){
-          return <div key={i}>Country: {[ country.name , <p key={i}> Capital: {country.capital} </p> ]}</div>; 
-        })}
-    </div>
-  );
+export class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+        countryName: ""
+    }
 }
 
-export default App;
+  render() {
+    return (
+      <div>
+        <h1>Country Details</h1>
+        <input onChange = {this.textChangeEvent } type  = "text"/>
+        
+        <Details name={this.state.countryName}></Details>
+    </div>
+    )
+  }
+  textChangeEvent = (e) => {
+    console.log(e.target.value);
+    this.setState({countryName: e.target.value});
+  }
+}
+
+export default App
