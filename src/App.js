@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 
 import './App.css';
 
 
 const COUNTRY_DETAILS = gql`{
-  countryDetails(name: "India") {
+  countryDetails(name: "united") {
     name,
     capital
   }
@@ -16,16 +16,11 @@ function App() {
   if(error) return <h1>Error</h1>
   console.log(data)
   return (
-    <>
-      <h2>Country Details...</h2>
-  <h2>{ data.countryDetails.map((country, id) => 
-        <div>
-          <h1 key = { id }>{ country.name }</h1>
-          <p>{ country.capital }</p>
-        </div>
-      )}
-  </h2>
-    </>
+    <div>
+        {data.countryDetails.map(function(country, i){
+          return <div key={i}>Country: {[ country.name , <p key={i}> Capital: {country.capital} </p> ]}</div>; 
+        })}
+    </div>
   );
 }
 
