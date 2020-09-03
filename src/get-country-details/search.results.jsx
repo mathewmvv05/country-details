@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%',
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -54,25 +54,23 @@ function SearchResults({ country }) {
         title="Paella dish"
       />
       <CardContent>
-      <Typography variant="body2" color="textSecondary" component="p">
-            <b>Lanugages</b>
-        </Typography>
-        {country.languages.map(function(language, i){
-          return <div key={i}>
-              <Language language = {language}></Language>
-          </div>; 
-        })}
         <Typography variant="body2" color="textSecondary" component="p">
-            <b>Currencies</b>
+          <b>Lanugages</b>
         </Typography>
-        {country.currencyDetails.map(function(currencyDetail, i){
-          return <div key={i}>
-              <CurrencyDetail currency = {currencyDetail}></CurrencyDetail>
-          </div>; 
-        })}
-
+          {country.languages.map(function(language, i){
+            return <div key={i}>
+                <Language language = {language}></Language>
+            </div>; 
+          })}
+        <Typography variant="body2" color="textSecondary" component="p">
+              <b>Currencies</b>
+        </Typography>
+          {country.currencyDetails.map(function(currencyDetail, i){
+            return <div key={i}>
+                <CurrencyDetail currency = {currencyDetail}></CurrencyDetail>
+            </div>; 
+          })}
       </CardContent>
-      
     </Card>
   );
 }

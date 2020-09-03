@@ -25,13 +25,11 @@ const COUNTRY_DETAILS = gql`
         }
     }
 }`;
-function Details({name}) {
+function SearchCountry({name}) {
   const { loading, error, data } = useQuery(COUNTRY_DETAILS, {variables: {name: name}});
   
   if(error) return <h1>Enter a Valid Country</h1>
   if(loading) return <h1>Loading</h1>
-  
-  console.log(data)
   return (
     <div>
         {data.countryDetails.map(function(country, i){
@@ -43,4 +41,4 @@ function Details({name}) {
   );
 }
 
-export { Details };
+export { SearchCountry };
