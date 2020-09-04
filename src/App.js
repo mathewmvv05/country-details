@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 
 import { ButtonAppBar } from "./Appbar.jsx";
-import { SearchCountry } from "./get-country-details/search-country.jsx";
+import { SearchCountry } from "./country-details/search-country.jsx";
 import './App.css';
 
 
@@ -19,13 +19,13 @@ export class App extends Component {
       <div>
         <ButtonAppBar></ButtonAppBar>
         <form noValidate autoComplete="off">
-          <TextField id="standard-basic" label="Enter Country Name..." onChange = {this.textChangeEvent } />
+          <TextField id="standard-basic" label="Enter Country Name..." onChange = {this.getSerchKeywordEvent } />
         </form>
         <SearchCountry name={this.state.countryName}></SearchCountry>
     </div>
     )
   }
-  textChangeEvent = (e) => {
+  getSerchKeywordEvent = (e) => {
     this.setState({countryName: e.target.value});
   }
 }

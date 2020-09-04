@@ -41,7 +41,7 @@ function SearchResults({ country }) {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar aria-label="country-details" className={classes.avatar}>
             {country.name.charAt(0)}
           </Avatar>
         }
@@ -51,7 +51,7 @@ function SearchResults({ country }) {
       <CardMedia
         className={classes.media}
         image= {country.flag}
-        title="Paella dish"
+        title="Flag"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
